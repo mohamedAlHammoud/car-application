@@ -1,0 +1,40 @@
+@import "../../../../scss/forms";
+@import "../../../../scss/colors.scss";
+@import "../../../../scss/offers";
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: $blue;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li {
+  float: left;
+}
+
+.container {
+  border-bottom-style: solid;
+  border-bottom-color: $yellow;
+  border-left-style: solid;
+  border-left-color: $blue;
+  border-right-style: solid;
+  border-right-color: $blue;
+}
+
+
+
+label {
+  font-size: 30px;
+  font-weight: 300;
+}

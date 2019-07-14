@@ -1,0 +1,154 @@
+<section class="container">
+  <h2 class="container--title"> Edit your personal information</h2>
+
+  <div class="profile">
+    <figure [ngClass]="previewing || previewImage !== '' ? 'preview' : ''">
+      <ng-container *ngIf="!previewing; else preview">
+        <img [src]="profileImage" [ngClass]="profileImage !== null && profileImage !== '' ? 'set' : 'unset'">
+      </ng-container>
+      <ng-template #preview>
+        <img [src]="previewImage" [ngClass]="previewImage !== null && previewImage !== '' ? 'set' : 'unset'">
+      </ng-template>
+      <!--      <figcaption>Profile Picture</figcaption>-->
+    </figure>
+    <form class="formpicture" (ngSubmit)="postUserPicture()" enctype="multipart/form-data">
+      <input id="file" class="uploadpic" type="file" accept="image/jpeg" (change)="processImage($event)" name="image">
+
+      <label for="file">
+        <span>Choose Profile Picture</span>
+        <div class="icon">
+          <fa-icon class="icon-user" [icon]="['fas', 'upload']"></fa-icon>
+        </div>
+      </label>
+      <button type="submit" class="uploadButton">Upload</button>
+    </form>
+  </div>
+  <form class="form" [formGroup]="formGroup" (ngSubmit)="updateUserInfo()" *ngIf="user$ | async as user">
+    <div class="general form-cnt">
+      <h3 class="form-cnt--title">
+
+        General
+      </h3>
+      <div class="form--group">
+
+        <label for="name">Name</label>
+        <input type="text" [value]="user.name" id="name" name="name" formControlName="name">
+        <ng-container *ngIf="formGroup.controls['name'].errors && formGroup.controls['name'].touched ">
+          <p>full name must contain at least 2 characters</p>
+        </ng-container>
+
+      </div>
+
+
+      <div class="form--group">
+        <label for="">Username</label>
+        <input type="text" [value]="user.username" id="username" name="username" formControlName="username">
+        <ng-container *ngIf="formGroup.controls['username'].errors && formGroup.controls['username'].touched">
+          <p>Username must contain at least 4 characters</p>
+        </ng-container>
+      </div>
+
+
+      <div class="form--group">
+        <label for="">Email</label>
+        <input type="email" [value]="user.email" id="email" name="email" formControlName="email">
+        <ng-container>
+          <p *ngIf="formGroup.controls['email'].invalid && formGroup.controls['email'].touched"> Please enter a valid
+            email</p>
+        </ng-container>
+      </div>
+
+
+      <div class="form--group">
+        <label for="">Password</label>
+        <input type="password" placeholder="******" id="password" name="password" formControlName="password">
+        <ng-container *ngIf="formGroup.controls['password'].errors">
+          <p *ngIf="formGroup.controls['password'].errors.minlength">Password should be at least 6 characters.</p>
+        </ng-container>
+      </div>
+
+
+      <div class="form--group">
+        <label for="">confirm Password</label>
+        <input type="password" placeholder="******" id="confirmPassword" name="confirmPassword" formControlName="confirmPassword">
+        <ng-container *ngIf="formGroup.controls['confirmPassword'].errors">
+          <p *ngIf="formGroup.controls['confirmPassword'].errors.passwordNotMatch">
+            passwords are not the same
+          </p>
+        </ng-container>
+      </div>
+    </div>
+
+
+    <div formGroupName="address" class="address form-cnt">
+
+      <h3 class="form-cnt--title">
+
+        Address
+      </h3>
+      <div class="form--group">
+        <label for="country">Country</label>
+        <input type="text" [value]="user.address.country" id="country" name="country" formControlName="country">
+        <ng-container *ngIf="formGroup.controls['address'].controls['country'].errors &&formGroup.controls['address'].controls['country'].touched">
+          <p>
+            The country should contain at least two charachters
+          </p>
+        </ng-container>
+      </div>
+
+
+      <div class="form--group">
+        <label for="state">State</label>
+        <input type="text" [value]="user.address.state" id="state" name="state" formControlName="state">
+        <ng-container *ngIf="formGroup.controls['address'].controls['state'].errors &&formGroup.controls['address'].controls['state'].touched">
+          <p>
+            The state should contain at least two charachters
+          </p>
+        </ng-container>
+      </div>
+
+
+      <div class="form--group">
+        <label for="state">City</label>
+        <input type="text" [value]="user.address.city" id="city" name="city" formControlName="city">
+        <ng-container *ngIf="formGroup.controls['address'].controls['city'].errors &&formGroup.controls['address'].controls['city'].touched">
+          <p>
+            The city should contain at least two charachters
+          </p>
+        </ng-container>
+      </div>
+
+
+      <div class="form--group">
+        <label for="state">Street Name</label>
+        <input type="text" [value]="user.address.streetName" id="streetName" name="streetName" formControlName="streetName">
+        <ng-container *ngIf="formGroup.controls['address'].controls['streetName'].errors &&formGroup.controls['address'].controls['streetName'].touched">
+          <p>
+            The street name should contain at least two charachters
+          </p>
+        </ng-container>
+      </div>
+
+
+      <div class="form--group">
+        <div class="form--group">
+          <label for="state">House Nr.</label>
+          <input type="number" [value]="user.address.buildingNumber" id="buildingNumber" name="buildingNumber" formControlName="buildingNumber">
+
+        </div>
+        <label for="state">Apartment Nr.</label>
+        <input type="number" [value]="user.address.apartmentNumber" id="apartmentNumber" name="apartmentNumber" formControlName="apartmentNumber">
+      </div>
+
+
+      <div class="form--group">
+        <label for="state">Postal Code</label>
+        <input type="number" [value]="user.address.postalCode" id="postalCode" name="postalCode" formControlName="postalCode">
+      </div>
+
+
+    </div>
+    <button type="submit" class="registerbtn">Update Profile</button>
+
+  </form>
+</section>

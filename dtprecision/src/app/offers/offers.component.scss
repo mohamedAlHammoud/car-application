@@ -1,0 +1,96 @@
+@import "../../scss/forms";
+@import "../../scss/colors.scss";
+@import "../../scss/offers";
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: $blue;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li {
+  float: left;
+}
+
+.container {}
+
+
+
+label {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+form {
+  max-width: 1140px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 14px;
+
+  &>div {
+    flex-basis: calc(33.33% - 12px);
+    margin-bottom: 14px;
+
+    .container {
+      border: 1px solid $blue;
+      overflow: hidden;
+      transition: max-height .4s ease;
+
+      &.closed {
+        max-height: 170px;
+      }
+
+      &.opened {
+        max-height: 100%;
+      }
+
+      .form--group {
+        p {
+          font-size: 18px;
+          margin-top: 0;
+        }
+
+        fa-icon {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}
+
+.icon {
+  .icon-user {
+    font-size: 30px;
+    display: block;
+    transition: color .4s ease, transform .6s ease;
+    transform: translateY(0px);
+    color: #494949;
+
+    &:hover {
+      color: #a0aca8;
+      transform: translateY(-5px);
+    }
+
+  }
+}
+
+.signout{
+ background-color: $light-gray;
+}
+
+button{
+  background-color: $blue;
+  
+}

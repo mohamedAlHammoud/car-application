@@ -1,0 +1,8 @@
+<ul>
+  <li> <a [routerLink]="['/user/profile']">Personal information</a></li>
+  <li><a [routerLink]="['/user/offer']">Offers</a></li>
+  <li> <a routerLink="/offers"> All offers</a></li>
+  <li> <a><button type="submit" class="signout" (click)="logout()">Logout</button> </a></li>
+</ul>
+
+<router-outlet></router-outlet>

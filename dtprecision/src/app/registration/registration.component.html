@@ -1,0 +1,98 @@
+<ul>
+  <li><a routerLink="/login">Login</a></li>
+</ul>
+
+<form [formGroup]="formGroup" (ngSubmit)="addUserInfo()" *ngIf="!success">
+  <div class="container">
+    <h1>Welcome to the Dt Precision</h1>
+    <div class="icon">
+      <fa-icon class="icon-user" [icon]="['fas', 'car']"></fa-icon>
+    </div>
+    <p>Please fill in this form to create an account.</p>
+
+
+    <div class="icon">
+      <fa-icon class="icon-user" [icon]="['fas', 'signature']"></fa-icon>
+
+    </div>
+
+    <label for="fullname"><b>Full name</b></label>
+    <input type="text" placeholder="Enter full name" name="name" formControlName="name" id="fullname" required>
+    <ng-container *ngIf="formGroup.controls['name'].errors && formGroup.controls['name'].touched ">
+      <p class="errormessages">full name must contain at least 2 characters</p>
+    </ng-container>
+    <div class="icon">
+      <fa-icon class="icon-user" [icon]="['fas', 'user-astronaut']"></fa-icon>
+    </div>
+    <label for="username"><b>Username</b></label>
+    <input type="text" placeholder="Enter username" name="username" formControlName="username" id="username" required>
+    <ng-container *ngIf="formGroup.controls['username'].errors && formGroup.controls['username'].touched">
+      <p class="errormessages">Username must contain at least 4 characters</p>
+    </ng-container>
+    <div class="icon">
+      <fa-icon class="icon-user" [icon]="['fas', 'at']"></fa-icon>
+    </div>
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter email" name="email" formControlName="email" id="email" required>
+    <ng-container>
+      <p *ngIf="formGroup.controls['email'].invalid && formGroup.controls['email'].touched" class="errormessages"> Please enter a valid email</p>
+    </ng-container>
+
+
+
+    <div class="icon">
+      <fa-icon class="icon-user" [icon]="['fas', 'unlock']"></fa-icon>
+    </div>
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" formControlName="password" id="password" required>
+    <ng-container *ngIf="formGroup.controls['password'].errors">
+      <p *ngIf="formGroup.controls['password'].errors.minlength" class="errormessages">Password should be at least 6 characters.</p>
+    </ng-container>
+
+
+    <div class="icon">
+      <fa-icon class="icon-user" [icon]="['fas', 'lock']"></fa-icon>
+    </div>
+    <label for="confirmPassword"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="confirmPassword" formControlName="confirmPassword" id="confirmPassword" required>
+    <ng-container *ngIf="formGroup.controls['confirmPassword'].errors">
+      <p *ngIf="formGroup.controls['confirmPassword'].errors.passwordNotMatch" class="errormessages">
+        passwords are not the same
+      </p>
+    </ng-container>
+    <div class="icon">
+      <fa-icon class="icon-user" [icon]="['fas', 'map-marked-alt']"></fa-icon>
+    </div>
+    <label for="adress"><b>Adress</b></label>
+    <fieldset formGroupName="address">
+
+      Country:<input type="text" placeholder="Country" name="country" formControlName="country" id="country" required>
+      State: <input type="text" placeholder="State" name="state" formControlName="state" id="state">
+
+    </fieldset>
+    <ng-container *ngIf="formGroup.controls['address'].controls['country'].errors &&formGroup.controls['address'].controls['country'].touched">
+      <p class="errormessages">
+        The country should contain at least two charachters
+      </p>
+    </ng-container>
+    <hr>
+
+
+    <button type="submit" class="registerbtn" [ngClass]="!isValid ? 'disabled' : 'enabled'">Register</button>
+  </div>
+  <!-- <div class="invalid"> -->
+  <!-- <ng-container *ngIf="!isValid" Form is not valid!></ng-container>
+    <ng-container *ngIf="errors"> -->
+  <!-- <p>
+
+      </p>
+    </ng-container> -->
+
+
+  <!-- </div> -->
+  <div class="container signin">
+    <p>Already have an account? <a routerLink="/login">Login</a></p>
+  </div>
+
+
+</form>

@@ -1,0 +1,304 @@
+@import "../../../scss/forms";
+@import "../../../scss/colors.scss";
+
+
+form {
+  flex-basis: 100%;
+  width: 100%;
+  margin-left: 0;
+  max-width: unset;
+  top: 0px;
+  padding: 18px 30px 24px 30px;
+  margin: 0 0 35px 0;
+  //border: 1px solid rgba(147, 184, 189, 0.8);
+  box-shadow: 0px 0px 20px rgba($light-gray, 0.2);
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  & .form-cnt {
+    display: flex;
+    flex-wrap: wrap;
+
+    &--title {
+      flex-basis: 100%;
+      margin-bottom: .8em;
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    & .form--group {
+      flex-basis: calc(50% - 12px);
+
+      &:nth-of-type(odd) {
+        margin-right: 12px;
+      }
+    }
+  }
+
+  h2 {
+    flex-basis: 100%;
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: .8em;
+  }
+
+  .general {
+    flex-basis: calc(50% - 12px);
+  }
+
+  div.address {
+    padding: 0;
+    flex-basis: calc(50% - 12px);
+    margin: 0;
+    border: none;
+
+
+  }
+
+  
+}
+
+
+.profile {
+  flex-basis: 20%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  //position: absolute;
+  //left: 0;
+  //top: 114px;
+
+  figure {
+    text-align: center;
+    width: 160px;
+    height: 160px;
+    display: block;
+    margin: 0 auto;
+    transform: translateX(-50%);
+    position: absolute;
+    left: 50%;
+
+    &.preview {
+      &~form label[for='file'] {
+        opacity: 0;
+        transition: opacity .4s ease, background-color .4s ease;
+        
+
+        &:hover {
+          opacity: 1;
+          background-color: rgba(lighten($light-gray, 20%), 0.88);
+        }
+      }
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      -webkit-border-radius: 100px;
+      -moz-border-radius: 100px;
+      border-radius: 100px;
+
+      &.unset {
+        z-index: 1;
+        display: none;
+
+
+      }
+
+      &.set {
+        z-index: 2;
+        display: block;
+
+      }
+    }
+  }
+}
+
+
+.icon {
+  .icon-user {
+    font-size: 30px;
+    display: block;
+    transition: color .4s ease, transform .6s ease;
+    transform: translateY(0px);
+    color: #494949;
+
+    &:hover {
+      color: lightslategray;
+      transform: translateY(-5px);
+    }
+  }
+}
+
+.container {
+  padding: 16px;
+  display: flex;
+  max-width: 1240px;
+  margin: 0 auto;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  &--title {
+    flex-basis: 100%;
+    text-align: center;
+    font-size: 2em;
+    margin-top: 10px;
+  }
+}
+
+input[type=text],
+input[type=number],
+input[type=email],
+input[type=password] {
+  width: 100%;
+  padding: 6px 6px 6px 2px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  border-bottom: 2px solid rgba($gray, 0.5);
+  font-size: .8rem;
+  font-family: "Poppins";
+  -webkit-transition: background-color .4s ease;
+  -moz-transition: background-color .4s ease;
+  -ms-transition: background-color .4s ease;
+  -o-transition: background-color .4s ease;
+  transition: background-color .4s ease;
+
+  &:hover {
+    border-bottom: 2px solid rgba($light-gray, 0.7);
+  }
+}
+
+input[type=text]:focus,
+input[type=number]:focus,
+input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.form--group label {
+  font-weight: 600;
+}
+
+.formpicture {
+  box-shadow: none;
+  border: none;
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex-wrap: wrap;
+  max-width: unset;
+  flex: unset;
+  padding: 0;
+  justify-content: center;
+
+  label {
+    width: 160px;
+    height: 160px;
+    display: block;
+    border-radius: 100px;
+    border: 2px solid rgba($blue, .2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    transition: border-color .5s ease;
+    z-index: 1;
+
+    span {
+      color: $gray;
+      transition: opacity .5s ease;
+    }
+
+    .icon {
+      display: inline-block;
+      position: absolute;
+      bottom: 20px;
+      transition: opacity .5s ease;
+      color: $gray;
+
+      fa-icon {
+        font-size: 17px;
+      }
+    }
+
+    &:hover {
+      border-color: rgba($blue, .96);
+
+      span,
+      .icon {
+        opacity: 1;
+      }
+    }
+  }
+
+}
+
+.uploadpic,
+.uploadButton {
+  flex-basis: 100%;
+  min-width: 150px;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  border-radius: 5px;
+  margin: 0;
+  min-height: 30px;
+  font-size: 1rem;
+  font-family: "Poppins";
+}
+
+input.uploadpic {
+  opacity: 0;
+  visibility: hidden;
+  width: 0;
+  min-width: 0;
+  position: absolute;
+}
+
+.uploadButton {
+  margin-top: 24px;
+  border: 2px solid $blue;
+  flex-basis: 100%;
+  max-width: 200px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background-color .4s ease;
+
+  &:hover {
+    background-color: rgba($blue, .4);
+  }
+}
+
+.registerbtn {
+  background-color: $blue;
+  color: $gray;
+  padding: 16px 20px;
+  font-family: "Poppins";
+  margin: 8px 0;
+  font-weight: 800;
+  font-size: 1em;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+h2 {
+  font-weight: 700;
+}
+
+h1 {
+  font-weight: 800;
+}
