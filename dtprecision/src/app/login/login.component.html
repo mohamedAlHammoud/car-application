@@ -1,0 +1,27 @@
+<ul>
+  <li><a routerLink="/register">Register</a></li>
+</ul>
+<h2 class="header">Login <div class="icon">
+    <fa-icon class="icon-user" [icon]="['fas', 'key']"></fa-icon>
+  </div>
+</h2>
+
+<form [formGroup]="formGroup" (ngSubmit)=logUserIn() *ngIf="!success">
+  <div class="icon">
+    <fa-icon class="icon-user" [icon]="['fas', 'user-tie']"></fa-icon>
+  </div>
+  <label for="email"><b>Enter your email or username</b></label>
+  <input type="text" placeholder="email or username" formControlName="usernameOrEmail" name="usernameOrEmail" id="usernameOrEmail" required>
+  <div class="icon">
+    <fa-icon class="icon-user" [icon]="['fas', 'lock']"></fa-icon>
+  </div>
+  <label for="password"><b>Password</b></label>
+  <input type="password" placeholder="Enter Password" formControlName="password" name="password" id="password" required>
+  <button type="submit" class="signin" [ngClass]="!isValid ? 'disabled' : 'enabled'">Login</button>
+  <div class="container login">
+    <p class="fontweight400">no acount yet? <a routerLink="/register">Sign up now!</a></p>
+  </div>
+</form>
+<div class="success" *ngIf="success">
+  <p>success!</p>
+</div>

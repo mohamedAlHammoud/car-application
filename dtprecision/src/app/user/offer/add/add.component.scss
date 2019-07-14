@@ -1,0 +1,85 @@
+@import "../../../../scss/forms";
+@import "../../../../scss/colors.scss";
+
+form {
+
+  flex-basis: 70%;
+  margin-left: 0;
+  max-width: unset;
+  width: 50%;
+
+
+  h2 {
+    flex-basis: 100%;
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: .8em;
+  }
+
+  position: center;
+  top: 0px;
+  width: 60%;
+  padding: 18px 6% 60px 6%;
+  margin: 0 auto;
+  border: 1px solid rgba(147, 184, 189, 0.8);
+  box-shadow: 0px 0px 20px rgba($light-gray, 0.2);
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .general {
+    flex-basis: calc(50% - 12px);
+  }
+}
+
+input[type=text],
+input[type=email],
+input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  border-bottom: 2px solid rgba($gray, 0.5);
+
+  &:hover {
+    border-bottom: 2px solid rgba($light-gray, 0.7);
+  }
+}
+
+.container {
+  padding: 16px;
+  display: flex;
+  max-width: 940px;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.postbutton {
+  background-color: #94e8c8;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+h2 {
+  font-weight: 700;
+}
+
+h1 {
+  font-weight: 800;
+}
+
+.errormessages {
+  font-weight: 400;
+  font-size: 12px;
+}
